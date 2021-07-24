@@ -9,20 +9,44 @@ import UIKit
 
 class ViewController : UIViewController, XMLParserDelegate {
 
-    var Model = ParserModel.shared // 싱글톤 객체 - 데이터 관리
-    var setting = LoadAPIFile.shared // 싱글톤 객체 - 호출
-    
-    
+    var isLock = true
+    var tagType : TagType = .none
+    var tempModel : item?
+    var books: [item] = []
     
     override func viewDidLoad() {
-        setting.parsing()
+        var parser : XMLParser
+        var yourKey = "" // 공공 데이터 포털에서 발급받은 개인 키
+        var url = URL(string: "")
+        parser = XMLParser(contentsOf: url!)!
+        parser.delegate = self
+        parser.parse()
+    }
+    
+    ///MARK ::: LOGIC
+    
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+        // 태그의 시작
+        print(elementName)
+        
+    }
+    
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        // 태그의 끝
+    }
+    
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
+        let parseString = string.trimmingCharacters(in: .whitespacesAndNewlines)
+        print(parseString)
+        //print(parseString)
+        //books.append(parseString)
     }
     
     @IBAction func tap(_ sender: Any) {
-        for i in 0..<Model.books.count {
-            print(Model.books[i])
+        for i in 0..<books.count {
+            print(books[i])
         }
-        print(Model.books.count)
+        print(books.count)
     }
     
 }

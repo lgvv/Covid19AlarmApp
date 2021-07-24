@@ -12,6 +12,7 @@ class TableViewController : UIViewController {
     var Model = ParserModel.shared // 싱글톤 객체 - 데이터 관리
     var setting = LoadAPIFile.shared // 싱글톤 객체 - 호출
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setting.parsing()
@@ -22,8 +23,12 @@ class TableViewController : UIViewController {
             let vc = segue.destination as? DetailViewController
             
             if let index = sender as? Int { // indexPath.row의 값이 sender통해 전달 돼
-                vc?.DetailModel.D_location.text = Model.books[index].gubun
+                //vc?.Header.text = Model.books[index].gubun // 지역 위치
+                DetailViewModel.shared.location = Model.books[index].gubun // 지역 위치
+                print(Model.books[index].gubun)
             }
+            print("A")
+            
         }
     }
     

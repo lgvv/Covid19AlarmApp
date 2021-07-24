@@ -9,10 +9,8 @@ import UIKit
 
 class DetailViewModel {
     
-    static var detailModel = DetailModel()
+    static var shared = DetailViewModel()
     
-    func set() {
-        
-    }
+    var location : String? // 지역위치
     
 }

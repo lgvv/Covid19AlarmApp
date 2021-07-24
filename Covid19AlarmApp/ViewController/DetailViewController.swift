@@ -9,11 +9,13 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    var DetailModel = DetailViewModel.detailModel // 싱글톤
+    @IBOutlet weak var Header: UILabel! // 지역 위치
     
+    var viewModel = DetailViewModel.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Header.text = viewModel.location
         
     }
 }
