@@ -9,9 +9,9 @@ import UIKit
 
 class TableViewController : UIViewController {
    
-    var Model = ParserModel.shared // 싱글톤 객체 - 데이터 관리
+    var Model = TableModel.shared // 싱글톤 객체 - 모델
     var setting = LoadAPIFile.shared // 싱글톤 객체 - 호출
-    
+    var tableViewModel = TableViewModel.shared // 싱글톤 객체 - 뷰모델
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,15 +19,12 @@ class TableViewController : UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetail" {
+        if segue.identifier == "DetailSegue" {
             let vc = segue.destination as? DetailViewController
-            
             if let index = sender as? Int { // indexPath.row의 값이 sender통해 전달 돼
-                //vc?.Header.text = Model.books[index].gubun // 지역 위치
-                DetailViewModel.shared.location = Model.books[index].gubun // 지역 위치
+                vc?.detailViewModel.location = Model.books[index].gubun // 지역 위치
                 print(Model.books[index].gubun)
             }
-            print("A")
             
         }
     }
@@ -62,4 +59,11 @@ extension TableViewController : UITableViewDelegate {
         
         performSegue(withIdentifier: "DetailSegue", sender: indexPath.row)
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        // 테이블 뷰 헤더에 넣을 글자
+        
+        return "기준 날짜 : \(tableViewModel.myformaat())\(Model.books[0].stdDay)"
+    }
 }
+

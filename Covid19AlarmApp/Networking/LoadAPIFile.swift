@@ -11,7 +11,7 @@ import UIKit
 // API CALL
 class LoadAPIFile : UIViewController, XMLParserDelegate {
     
-    var Model = ParserModel.shared // 싱글톤 객체
+    var Model = TableModel.shared // 싱글톤 객체
     static var shared = LoadAPIFile()
     
     func parsing() {

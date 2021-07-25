@@ -11,11 +11,12 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var Header: UILabel! // 지역 위치
     
-    var viewModel = DetailViewModel.shared
+    var detailViewModel = DetailViewModel.shared
+    var Model = TableModel.shared // 싱글톤 객체 - 모델
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Header.text = viewModel.location
+        Header.text = "지역 : \(detailViewModel.location)"
         
     }
 }

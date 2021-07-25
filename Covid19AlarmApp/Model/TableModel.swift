@@ -7,15 +7,16 @@
 
 import Foundation
 
-// Model
-class ParserModel {
+// TableModel
+class TableModel {
     
-    static var shared = ParserModel() // 싱글톤 객체
+    static var shared = TableModel() // 싱글톤 객체
     
     var isLock = true
     var tagType : TagType = .none
     var tempModel : item?
     var books: [item] = [] // API 호출에서 받아온 정보를 여기서 담고 있다.
+    
     
 }
 

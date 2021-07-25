@@ -9,11 +9,14 @@ import UIKit
 
 class TableViewModel {
     
-    //var parserModel = ParserModel.shared
+    static var shared = TableViewModel() // 싱글톤 객체
     
-    func settingCell() {
-        
+    
+    func myformaat() -> String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy"
+        let current_date_string = formatter.string(from: Date())
+        print(current_date_string)
+        return current_date_string
     }
-    
-    
 }
