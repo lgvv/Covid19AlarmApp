@@ -10,7 +10,9 @@ import UIKit
 class DetailViewModel {
     
     static var shared = DetailViewModel()
+    var Model = TableModel.shared // 싱글톤 객체 - 모델
     
-    var location : String? // 지역위치
+    var row : Int! // table indexPath 정보
+    
     
 }

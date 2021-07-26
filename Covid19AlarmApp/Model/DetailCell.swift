@@ -8,8 +8,6 @@
 import UIKit
 
 class DetailCell : UITableViewCell {
-    
-    @IBOutlet weak var total: UILabel!
 
-    
+    @IBOutlet weak var data: UILabel!
 }

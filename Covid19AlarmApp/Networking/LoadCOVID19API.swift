@@ -9,14 +9,14 @@ import Foundation
 import UIKit
 
 // API CALL
-class LoadAPIFile : UIViewController, XMLParserDelegate {
+class LoadCOVID19API : UIViewController, XMLParserDelegate {
     
     var Model = TableModel.shared // 싱글톤 객체
-    static var shared = LoadAPIFile()
+    static var shared = LoadCOVID19API()
     
     func parsing() {
         var parser : XMLParser
-        let url = URL(string: APIKey)
+        let url = URL(string: COVIDAPI)
         parser = XMLParser(contentsOf: url!)!
         parser.delegate = self
         parser.parse()
