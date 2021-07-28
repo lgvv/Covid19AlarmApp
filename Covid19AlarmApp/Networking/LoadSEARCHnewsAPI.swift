@@ -13,20 +13,11 @@ class LoadSEARCHnewsAPI {
     static var shared = LoadSEARCHnewsAPI()
     
     let jsconDecoder: JSONDecoder = JSONDecoder()
-
+    
+    
     func urlTaskDone() {
         let item = dataManager.shared.searchResult?.items[0]
         print(item)
-//        do {
-//            let imageURL = URL(string: item!.image)
-//            let imageData = try Data(contentsOf: imageURL!)
-//            let posterImage = UIImage(data: imageData)
-//            OperationQueue.main.addOperation {
-//                self.posterImageView.image = posterImage
-//                self.movieTitleLabel.text = item?.title
-//            }
-//
-//        } catch { }
     }
     
     func requestAPIToNaver(queryValue: String) {

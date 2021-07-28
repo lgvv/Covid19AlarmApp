@@ -9,4 +9,7 @@ import UIKit
 
 class NewsCell: UICollectionViewCell {
     
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var itemdesc: UILabel!
+    
 }

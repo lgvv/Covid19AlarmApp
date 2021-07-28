@@ -10,6 +10,7 @@ import UIKit
 class DetailViewController: UIViewController {
     
     @IBOutlet weak var Header: UILabel! // 지역 위치
+    @IBOutlet weak var NewsView: UIView!
     
     var detailViewModel = DetailViewModel.shared
     var Model = TableModel.shared // 싱글톤 객체 - 모델
@@ -17,7 +18,6 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Header.text = "🇰🇷 지역 : \(Model.books[detailViewModel.row].gubun)"
-        
     }
 }
 

@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  Covid19AlarmApp
-//
-//  Created by Hamlit Jason on 2021/07/20.
-//
-
 import UIKit
 
 class ViewController : UIViewController, XMLParserDelegate {
@@ -17,7 +10,7 @@ class ViewController : UIViewController, XMLParserDelegate {
     override func viewDidLoad() {
         var parser : XMLParser
         var yourKey = "" // 공공 데이터 포털에서 발급받은 개인 키
-        var url = URL(string: "")
+        var url = URL(string: COVIDAPI)
         parser = XMLParser(contentsOf: url!)!
         parser.delegate = self
         parser.parse()

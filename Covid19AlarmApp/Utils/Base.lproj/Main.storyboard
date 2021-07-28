@@ -123,7 +123,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="fIZ-CO-gUI">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="fIZ-CO-gUI">
                                 <rect key="frame" x="0.0" y="173" width="414" height="290"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="290" id="I7F-4n-SPY"/>
@@ -158,38 +158,151 @@
                                 </connections>
                             </tableView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nlj-xA-oCG">
-                                <rect key="frame" x="0.0" y="471" width="414" height="207"/>
+                                <rect key="frame" x="0.0" y="463" width="414" height="299"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Nlj-xA-oCG" secondAttribute="height" multiplier="2:1" id="pGD-GW-de2"/>
+                                    <constraint firstAttribute="height" constant="299" id="oFw-yQ-6XD"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="aMm-DA-nnl" kind="embed" id="za5-yU-dhE"/>
+                                    <segue destination="kme-6n-H9h" kind="embed" id="lvz-aF-QgT"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UHL-ic-q8o"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Nlj-xA-oCG" firstAttribute="trailing" secondItem="UHL-ic-q8o" secondAttribute="trailing" id="31A-p6-j2i"/>
-                            <constraint firstItem="Nlj-xA-oCG" firstAttribute="top" secondItem="fIZ-CO-gUI" secondAttribute="bottom" constant="8" symbolic="YES" id="3RT-sX-Q15"/>
-                            <constraint firstItem="Nlj-xA-oCG" firstAttribute="leading" secondItem="UHL-ic-q8o" secondAttribute="leading" id="Dqx-cw-VeY"/>
+                            <constraint firstItem="UHL-ic-q8o" firstAttribute="bottom" secondItem="Nlj-xA-oCG" secondAttribute="bottom" constant="100" id="CMh-Ze-lNm"/>
                             <constraint firstItem="fIZ-CO-gUI" firstAttribute="trailing" secondItem="UHL-ic-q8o" secondAttribute="trailing" id="Esg-4L-aBW"/>
                             <constraint firstItem="99P-cN-KiX" firstAttribute="top" secondItem="UHL-ic-q8o" secondAttribute="top" constant="26" id="Fp0-jf-JaK"/>
                             <constraint firstItem="UHL-ic-q8o" firstAttribute="trailing" secondItem="99P-cN-KiX" secondAttribute="trailing" constant="20" id="Hgl-yf-pSf"/>
                             <constraint firstItem="fIZ-CO-gUI" firstAttribute="top" secondItem="99P-cN-KiX" secondAttribute="bottom" constant="26" id="Jr6-WE-KPh"/>
                             <constraint firstItem="fIZ-CO-gUI" firstAttribute="leading" secondItem="UHL-ic-q8o" secondAttribute="leading" id="NAB-vF-4J3"/>
                             <constraint firstItem="99P-cN-KiX" firstAttribute="leading" secondItem="UHL-ic-q8o" secondAttribute="leading" constant="20" id="Yoh-EF-YCq"/>
-                            <constraint firstItem="UHL-ic-q8o" firstAttribute="bottom" secondItem="Nlj-xA-oCG" secondAttribute="bottom" constant="184" id="ny9-76-UiP"/>
+                            <constraint firstItem="Nlj-xA-oCG" firstAttribute="leading" secondItem="UHL-ic-q8o" secondAttribute="leading" id="daL-4m-SMI"/>
+                            <constraint firstItem="Nlj-xA-oCG" firstAttribute="trailing" secondItem="UHL-ic-q8o" secondAttribute="trailing" id="dhD-HN-RFa"/>
+                            <constraint firstItem="Nlj-xA-oCG" firstAttribute="top" secondItem="fIZ-CO-gUI" secondAttribute="bottom" id="eJU-I6-jpa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2PZ-Ky-A6Y"/>
                     <connections>
                         <outlet property="Header" destination="99P-cN-KiX" id="rVq-tX-kYY"/>
+                        <outlet property="NewsView" destination="Nlj-xA-oCG" id="mo3-1j-1YX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vkj-8c-8qa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="224.63768115942031" y="222.99107142857142"/>
+        </scene>
+        <!--News View Controller-->
+        <scene sceneID="3M9-QR-Jgg">
+            <objects>
+                <viewController storyboardIdentifier="NewsViewController" id="kme-6n-H9h" customClass="NewsViewController" customModule="Covid19AlarmApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ACo-UQ-GOU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="299"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XGa-ev-7wP">
+                                <rect key="frame" x="0.0" y="38" width="414" height="239"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SlY-Hg-Iod">
+                                    <size key="itemSize" width="194" height="219"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NewsCell" id="xcJ-Hw-Gsz" customClass="NewsCell" customModule="Covid19AlarmApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="10" width="194" height="219"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="akc-YE-i1Y">
+                                            <rect key="frame" x="0.0" y="0.0" width="194" height="219"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AaB-Oq-5Fh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="194" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CD5-rY-JcF">
+                                                    <rect key="frame" x="0.0" y="23" width="194" height="196"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="194" height="219"/>
+                                        <connections>
+                                            <outlet property="itemdesc" destination="CD5-rY-JcF" id="lQH-sR-eLh"/>
+                                            <outlet property="title" destination="AaB-Oq-5Fh" id="6jz-zk-Aps"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="kme-6n-H9h" id="5OI-x6-ev5"/>
+                                    <outlet property="delegate" destination="kme-6n-H9h" id="hZ1-6K-Ckd"/>
+                                </connections>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 지역 뉴스 알림" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1VH-PN-cWP">
+                                <rect key="frame" x="0.0" y="0.0" width="201" height="34"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bZY-uc-xwC">
+                                <rect key="frame" x="300" y="6" width="108" height="30"/>
+                                <state key="normal" title="우리지역 뉴스보기"/>
+                                <connections>
+                                    <action selector="NewsChange:" destination="kme-6n-H9h" eventType="touchUpInside" id="ap0-0q-azj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="d7D-v8-fzh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1VH-PN-cWP" firstAttribute="leading" secondItem="ACo-UQ-GOU" secondAttribute="leading" id="1kJ-Av-Qax"/>
+                            <constraint firstItem="1VH-PN-cWP" firstAttribute="top" secondItem="ACo-UQ-GOU" secondAttribute="top" id="Hml-YS-Ida"/>
+                            <constraint firstItem="bZY-uc-xwC" firstAttribute="top" secondItem="ACo-UQ-GOU" secondAttribute="top" constant="6" id="c6a-k4-IdS"/>
+                            <constraint firstItem="bZY-uc-xwC" firstAttribute="leading" relation="lessThanOrEqual" secondItem="1VH-PN-cWP" secondAttribute="trailing" constant="99" id="cAy-FK-sWT"/>
+                            <constraint firstAttribute="trailing" secondItem="bZY-uc-xwC" secondAttribute="trailing" constant="6" id="ff8-tD-64F"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="myCollectionView" destination="XGa-ev-7wP" id="gqD-4t-Ifz"/>
+                        <outlet property="sectionTitle" destination="1VH-PN-cWP" id="1aX-ql-tRn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fHJ-P3-hvm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1066.6666666666667" y="222.65625"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Vth-Yb-JlX">
+            <objects>
+                <viewController id="RL4-Bz-ipL" customClass="ViewController" customModule="Covid19AlarmApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4D6-k0-Rnl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jf-m0-Xf9">
+                                <rect key="frame" x="184" y="123" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="tap:" destination="RL4-Bz-ipL" eventType="touchUpInside" id="MhY-rT-ydy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="CgK-8v-OZ0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b0G-va-fco" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1051" y="733"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="vdD-VI-C2t">
@@ -256,79 +369,6 @@
             </objects>
             <point key="canvasLocation" x="-1565.217391304348" y="222.99107142857142"/>
         </scene>
-        <!--News View Controller-->
-        <scene sceneID="QB3-fU-Rh1">
-            <objects>
-                <viewController id="aMm-DA-nnl" customClass="NewsViewController" customModule="Covid19AlarmApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Dhy-xZ-Zma">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="207"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00지역 코로나" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPk-b7-MSW">
-                                <rect key="frame" x="8" y="6" width="93.5" height="20"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bnC-Eu-979">
-                                <rect key="frame" x="0.0" y="39" width="414" height="160"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="9ME-RV-AwH">
-                                    <size key="itemSize" width="120" height="160"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NewsCell" id="qKR-1m-2Bh" customClass="NewsCell" customModule="Covid19AlarmApp" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="0.0" width="120" height="160"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mMF-V5-GlU">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="160"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBK-fs-s9F">
-                                                    <rect key="frame" x="8" y="13" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TIN-aw-aGB">
-                                                    <rect key="frame" x="8" y="42" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="aMm-DA-nnl" id="s2N-B5-gMu"/>
-                                    <outlet property="delegate" destination="aMm-DA-nnl" id="bVn-VD-ZaQ"/>
-                                </connections>
-                            </collectionView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="8Ss-lp-SgM"/>
-                        <color key="backgroundColor" systemColor="systemYellowColor"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="bnC-Eu-979" secondAttribute="bottom" constant="8" id="38q-Gi-zcx"/>
-                            <constraint firstItem="bnC-Eu-979" firstAttribute="leading" secondItem="Dhy-xZ-Zma" secondAttribute="leading" id="Ia7-fY-Y8X"/>
-                            <constraint firstItem="bnC-Eu-979" firstAttribute="top" secondItem="lPk-b7-MSW" secondAttribute="bottom" constant="13" id="Kj6-0d-BD6"/>
-                            <constraint firstAttribute="trailing" secondItem="bnC-Eu-979" secondAttribute="trailing" id="Zjc-5w-you"/>
-                            <constraint firstItem="lPk-b7-MSW" firstAttribute="top" secondItem="Dhy-xZ-Zma" secondAttribute="top" constant="6" id="ipD-Q4-HNG"/>
-                            <constraint firstItem="lPk-b7-MSW" firstAttribute="leading" secondItem="Dhy-xZ-Zma" secondAttribute="leading" constant="8" id="xGy-HA-OAC"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="sectionTitle" destination="lPk-b7-MSW" id="rOZ-fV-5pr"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8z9-B7-zpe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1078" y="223"/>
-        </scene>
     </scenes>
     <resources>
         <systemColor name="linkColor">
@@ -336,9 +376,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

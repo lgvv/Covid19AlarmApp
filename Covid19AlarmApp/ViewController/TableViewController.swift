@@ -17,10 +17,9 @@ class TableViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         COVIDAPICALL.parsing()
-        let queryValue: String = "대전코로나"
+        let queryValue: String = "코로나"
         print(queryValue)
         SEARCHAPICALL.requestAPIToNaver(queryValue: queryValue)
-       
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -61,14 +60,16 @@ extension TableViewController : UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let queryValue: String = "\(Model.books[indexPath.row].gubun)코로나"
+        print(queryValue)
+        SEARCHAPICALL.requestAPIToNaver(queryValue: queryValue)
         performSegue(withIdentifier: "DetailSegue", sender: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         // 테이블 뷰 헤더에 넣을 글자
         
-        return "기준 날짜 : \(tableViewModel.myformaat() )\(Model.books[0].stdDay)"
+        return "기준 날짜 : \(tableViewModel.myformaat())\(Model.books[0].stdDay)"
     }
 }
 
