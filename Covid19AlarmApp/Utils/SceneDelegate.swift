@@ -6,17 +6,19 @@
 //
 
 import UIKit
+import UserNotifications
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    var Model = TableModel.shared // 싱글톤 객체 - 모델
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -34,6 +36,44 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillResignActive(_ scene: UIScene) {
         // Called when the scene will move from an active state to an inactive state.
         // This may occur due to temporary interruptions (ex. an incoming phone call).
+        
+        if #available(iOS 10.0, *) { // iOS 버전 10 이상에서 작동
+            
+            UNUserNotificationCenter.current().getNotificationSettings { [self] settings in
+                
+                if settings.authorizationStatus == UNAuthorizationStatus.authorized {
+                    /*
+                     로컬 알림을 발송할 수 있는 상태이면
+                     - 유저의 동의를 구한다.
+                     */
+                    let nContent = UNMutableNotificationContent() // 로컬알림에 대한 속성 설정 가능
+                    nContent.title = "🦠오늘의 코로나 현황 알림⏰"
+                    nContent.subtitle = "우리나라 총 확진자 : \(self.Model.books[18].defCnt)"
+                    nContent.body = "\(self.Model.books[1].gubun) 총 확진자 : \(Model.books[1].defCnt)\n\(self.Model.books[1].gubun) 확진자 : \(Model.books[1].incDec)"
+                    nContent.sound = UNNotificationSound.default
+                    nContent.userInfo = ["name":"lgvv"]
+                    
+                    var date = DateComponents()
+                    date.hour = 16
+                    date.minute = 42
+                    
+                    
+                    // 알림 발송 조건 객체
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
+                    // 알림 요청 객체
+                    let request = UNNotificationRequest(identifier: "wakeup", content: nContent, trigger: trigger)
+                    // NotificationCenter에 추가
+                    UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                } else {
+                    NSLog("User not agree")
+                }
+            }
+            
+        } else {
+            NSLog("User iOS Version lower than 13.0. please update your iOS version")
+            // iOS 9.0 이하에서는 UILocalNotification 객체를 활용한다.
+        }
+        
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
