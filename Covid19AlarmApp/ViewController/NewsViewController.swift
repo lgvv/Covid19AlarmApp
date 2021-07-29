@@ -11,6 +11,7 @@ class NewsViewController : UIViewController {
     
     @IBOutlet weak var sectionTitle: UILabel!
     @IBOutlet weak var myCollectionView: UICollectionView!
+    @IBOutlet weak var NewsChangeButton: UIButton!
     
     var detailViewModel = DetailViewModel.shared // 싱글톤 객체
     var Model = TableModel.shared // 싱글톤 객체 - 모델
@@ -37,10 +38,25 @@ class NewsViewController : UIViewController {
     }
     
     @IBAction func NewsChange(_ sender: Any) {
-        let queryValue: String = "코로나"
-        print(queryValue)
-        SEARCHAPICALL.requestAPIToNaver(queryValue: queryValue)
-        myCollectionView.reloadData()
+        /*
+         동기화의 문제로
+         UI가 APICALL완료보다 먼저 그려지기 때문에, 이전에 데이터의 순환을 활용한다
+         */
+        
+        if NewsChangeButton.titleLabel?.text == "우리지역 뉴스보기" {
+            let queryValue: String = "코로나"
+            print(queryValue)
+            SEARCHAPICALL.requestAPIToNaver(queryValue: queryValue)
+            NewsChangeButton.setTitle("전체지역 뉴스보기", for: .normal)
+            myCollectionView.reloadData()
+        } else {
+            let queryValue: String = "\(Model.books[detailViewModel.row].gubun) 코로나"
+            print(queryValue)
+            SEARCHAPICALL.requestAPIToNaver(queryValue: queryValue)
+            NewsChangeButton.setTitle("우리지역 뉴스보기", for: .normal)
+            myCollectionView.reloadData()
+        }
+        
     }
 }
 
@@ -54,9 +70,8 @@ extension NewsViewController : UICollectionViewDataSource {
             print("error")
             return UICollectionViewCell()
         }
-        
-        cell.title.text = dataManager.shared.searchResult?.items[indexPath.row].title
-        cell.itemdesc.text = dataManager.shared.searchResult?.items[indexPath.row].itemDescription
+        cell.title.text = dataManager.shared.searchResult?.items[indexPath.row].title.replacingOccurrences(of: "<[^>]+>|&quot;", with: "", options: .regularExpression, range: nil)
+        cell.itemdesc.text = dataManager.shared.searchResult?.items[indexPath.row].itemDescription.replacingOccurrences(of: "<[^>]+>|&quot;", with: "", options: .regularExpression, range: nil)
         return cell
     }
 }
