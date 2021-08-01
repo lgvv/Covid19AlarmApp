@@ -54,8 +54,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     nContent.userInfo = ["name":"lgvv"]
                     
                     var date = DateComponents()
-                    date.hour = 16
-                    date.minute = 42
+                    date.hour = 7
+                    date.minute = 59
                     
                     
                     // 알림 발송 조건 객체
