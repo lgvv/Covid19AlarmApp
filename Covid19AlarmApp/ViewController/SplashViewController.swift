@@ -33,7 +33,7 @@ class SplashViewController : UIViewController {
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
         } else if Model.books.count == 0 {
-            let AlertDialog = UIAlertController(title: "APICALL정보를 받아올 수 없습니다.", message: "NETWORK ERROR", preferredStyle: .alert)
+            let AlertDialog = UIAlertController(title: "정부에서 코로나 현황을 업데이트 중입니다.", message: "NETWORK ERROR", preferredStyle: .alert)
         
             let okAction = UIAlertAction(title: "확인", style: .default) {
                 _ in

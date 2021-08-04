@@ -11,7 +11,6 @@ class TableViewModel {
     
     static var shared = TableViewModel() // 싱글톤 객체
     
-    
     func myformaat() -> String{
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy"
@@ -19,4 +18,6 @@ class TableViewModel {
         print(current_date_string)
         return current_date_string
     }
+  
+
 }

@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 /*
  UserDefault
   - BellCheck : 벨이 켜졌는가 꺼졌는가?
@@ -50,7 +49,7 @@ class DetailViewController: UIViewController {
     
 }
 
-extension DetailViewController : UITableViewDataSource {
+extension DetailViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5

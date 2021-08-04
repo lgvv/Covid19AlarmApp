@@ -17,7 +17,6 @@ class LoadSEARCHnewsAPI {
     
     func urlTaskDone() {
         let item = dataManager.shared.searchResult?.items[0]
-        
     }
     
     func requestAPIToNaver(queryValue: String) {

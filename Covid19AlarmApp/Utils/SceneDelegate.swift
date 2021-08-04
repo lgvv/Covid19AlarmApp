@@ -41,21 +41,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             UNUserNotificationCenter.current().getNotificationSettings { [self] settings in
                 
-                if settings.authorizationStatus == UNAuthorizationStatus.authorized {
+                if settings.authorizationStatus == UNAuthorizationStatus.authorized && UserDefaults.standard.integer(forKey: "BellCheck") == 1 {
                     /*
-                     로컬 알림을 발송할 수 있는 상태이면
+                     로컬 알림을 발송할 수 있는 상태이고, 등록된 벨 값이 있으면
                      - 유저의 동의를 구한다.
                      */
+                    let location = UserDefaults.standard.string(forKey: "BellLocation")
                     let nContent = UNMutableNotificationContent() // 로컬알림에 대한 속성 설정 가능
                     nContent.title = "🦠오늘의 코로나 현황 알림⏰"
                     nContent.subtitle = "우리나라 총 확진자 : \(self.Model.books[18].defCnt)"
-                    nContent.body = "\(self.Model.books[1].gubun) 총 확진자 : \(Model.books[1].defCnt)\n\(self.Model.books[1].gubun) 확진자 : \(Model.books[1].incDec)"
+                    nContent.body = "\(location!) 총 확진자 : \(Model.books[1].defCnt)\n\(location!) 오늘 확진자 : \(Model.books[1].incDec)"
                     nContent.sound = UNNotificationSound.default
                     nContent.userInfo = ["name":"lgvv"]
                     
                     var date = DateComponents()
-                    date.hour = 7
-                    date.minute = 59
+                    date.hour = 8
+                    date.minute = 50
                     
                     
                     // 알림 발송 조건 객체

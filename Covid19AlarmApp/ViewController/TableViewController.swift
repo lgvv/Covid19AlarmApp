@@ -17,9 +17,7 @@ class TableViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         COVIDAPICALL.parsing()
-        APICALLMISS()
         let queryValue: String = "코로나"
-        print(queryValue)
         SEARCHAPICALL.requestAPIToNaver(queryValue: queryValue)
     }
     
@@ -32,21 +30,6 @@ class TableViewController : UIViewController {
             }
             
         }
-    }
-    
-    func APICALLMISS() {
-        if Model.books.count == 0 {
-            let AlertDialog = UIAlertController(title: "APICALL정보를 받아올 수 없습니다.", message: "NETWORK ERROR", preferredStyle: .alert)
-        
-            let okAction = UIAlertAction(title: "확인", style: .default) {
-                _ in
-                sleep(10000)
-            }
-            AlertDialog.addAction(okAction)
-            present(AlertDialog, animated: true)
-            print("AD")
-        }
-        
     }
     
 }
