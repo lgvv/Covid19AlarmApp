@@ -182,10 +182,17 @@
                             <constraint firstItem="Nlj-xA-oCG" firstAttribute="top" secondItem="fIZ-CO-gUI" secondAttribute="bottom" id="eJU-I6-jpa"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="2PZ-Ky-A6Y"/>
+                    <navigationItem key="navigationItem" id="2PZ-Ky-A6Y">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="bell.slash" catalog="system" id="j3X-1r-tHB">
+                            <connections>
+                                <action selector="naviRightItemClicked:" destination="VTQ-5s-vlV" id="YPA-4U-3LJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="Header" destination="99P-cN-KiX" id="rVq-tX-kYY"/>
                         <outlet property="NewsView" destination="Nlj-xA-oCG" id="mo3-1j-1YX"/>
+                        <outlet property="naviRightItem" destination="j3X-1r-tHB" id="hOt-ns-oQg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vkj-8c-8qa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -387,6 +394,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bell.slash" catalog="system" width="124" height="128"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
